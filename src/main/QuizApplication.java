@@ -21,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -47,6 +48,8 @@ public class QuizApplication extends javax.swing.JFrame {
 
     int correctAns = 0;
     int selected = 0;
+    
+    
 
     public static final Random gen = new Random();
 
@@ -86,6 +89,7 @@ public class QuizApplication extends javax.swing.JFrame {
         picLabel = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
         rslabel = new javax.swing.JLabel();
+        attemptLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,6 +113,11 @@ public class QuizApplication extends javax.swing.JFrame {
         option1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         option1.setText("jRadioButton1");
         option1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        option1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                option1ActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -180,6 +189,9 @@ public class QuizApplication extends javax.swing.JFrame {
         rslabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rslabel.setForeground(new java.awt.Color(255, 204, 0));
 
+        attemptLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        attemptLabel.setForeground(new java.awt.Color(255, 153, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -206,7 +218,10 @@ public class QuizApplication extends javax.swing.JFrame {
                         .addGap(119, 119, 119)
                         .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(attemptLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,7 +243,9 @@ public class QuizApplication extends javax.swing.JFrame {
                         .addComponent(ansPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(rslabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(attemptLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -266,6 +283,10 @@ public class QuizApplication extends javax.swing.JFrame {
 
     }//GEN-LAST:event_submitButtonActionPerformed
 
+    private void option1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_option1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_option1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -286,6 +307,7 @@ public class QuizApplication extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ansPanel;
+    private javax.swing.JLabel attemptLabel;
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton nextButton;
@@ -321,7 +343,7 @@ public class QuizApplication extends javax.swing.JFrame {
         i=a;
         qnum++;
 
-        numQs = 5;
+        numQs = 10;
         qnumber.setText(String.valueOf(qnum));
 
         question.setText(list.get(i).getDescription());
@@ -427,15 +449,15 @@ public class QuizApplication extends javax.swing.JFrame {
         if (selected == correctAns) {
 
             corrects++;
-            ImageIcon icon1 = new ImageIcon("src\\Images\\right.png");
+//            ImageIcon icon1 = new ImageIcon("src\\Images\\right.png");
 
-            rslabel.setIcon(icon1);
+//            rslabel.setIcon(icon1);
 
 //            JOptionPane.showMessageDialog(null, " Correct!", "Result", JOptionPane.INFORMATION_MESSAGE, icon1);
         } else {
             wrongs++;
-            ImageIcon icon2 = new ImageIcon("src\\Images\\wrong.png");
-            rslabel.setIcon(icon2);
+//            ImageIcon icon2 = new ImageIcon("src\\Images\\wrong.png");
+//            rslabel.setIcon(icon2);
 //            JOptionPane.showMessageDialog(null, " Wrong", "Result", JOptionPane.INFORMATION_MESSAGE, icon2);
         }
 
@@ -452,11 +474,40 @@ public class QuizApplication extends javax.swing.JFrame {
         String s = "Results";
         JLabel label = new JLabel(s);
         label.setFont(new Font("serif", Font.PLAIN, 14));
+        
+        int result = (int) (((float) (total - wrongs) / total) * 100);
+        
+        double result1 = (((total - wrongs) / total) * 100);
+        
+         String qry = "update student set score = ? where ID= "+ String.valueOf(StuDetailsForm.id);
+         
+//         update users set num_points = ? where first_name = ?
+         System.out.println("ID = "+StuDetailsForm.id);
+
+        try {
+            
+            PreparedStatement pst=null;
+            
+           
+            pst = conn.prepareStatement(qry, java.sql.Statement.RETURN_GENERATED_KEYS);
+            pst.setDouble(1, result);
+            
+            pst.execute();
+            
+            System.out.print("Score added= "+result);
+
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
 
         JOptionPane.showMessageDialog(null, s
                 + "\nIncorrect Answers: \t" + wrongs
                 + "\nCorrect Answers  : \t" + (total - wrongs)
-                + "\nScore            : \t\t" + (int) (((float) (total - wrongs) / total) * 100) + "%",
+                + "\nScore            : \t\t" + result + "%",
                 "Results", JOptionPane.INFORMATION_MESSAGE, icon3
         );
         System.exit(0);
