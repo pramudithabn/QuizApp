@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -39,6 +40,9 @@ public class StuDetailsForm extends javax.swing.JFrame {
         initComponents();
         conn = DbConnector.ConnecrDb();
         setLocationRelativeTo(null);
+        
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("Images\\icon_logo.png"));
+        setIconImage(icon.getImage());
 
     }
 
@@ -263,7 +267,7 @@ public class StuDetailsForm extends javax.swing.JFrame {
         System.out.println("Last updated ="+getID());
 
         this.dispose();
-        InstructionWin hm =  new InstructionWin();
+        Home hm =  new Home();
         hm.setVisible(true);
         hm.setLocationRelativeTo(null);
         

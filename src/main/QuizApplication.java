@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 
 /*
@@ -63,6 +65,8 @@ public class QuizApplication extends javax.swing.JFrame {
 
         qdata();
         setVisibleContent();
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("Images\\icon_logo.png"));
+        setIconImage(icon.getImage());
     }
 
     /**
@@ -290,13 +294,14 @@ public class QuizApplication extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 
         JFrame frame = new JFrame("Quiz");
         frame.setSize(600, 500);
         frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
         frame.setResizable(true);
 
+        UIManager.setLookAndFeel("com.jtattoo.plaf.mint.MintLookAndFeel");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -469,7 +474,7 @@ public class QuizApplication extends javax.swing.JFrame {
 
     public void showSummary() {
 
-        ImageIcon icon3 = new ImageIcon("src\\Images\\award1.png");
+        ImageIcon icon3 = new ImageIcon(getClass().getClassLoader().getResource("Images\\award1.png"));
 //        ImageIcon icon3 = new ImageIcon("resources\\Images\\award1.png");
         String s = "Results";
         JLabel label = new JLabel(s);

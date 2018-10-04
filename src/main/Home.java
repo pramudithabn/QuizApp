@@ -2,6 +2,7 @@ package main;
 
 
 import java.awt.Color;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -18,16 +19,18 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Pramuditha Buddhini
  */
-public class InstructionWin extends javax.swing.JFrame {
+public class Home extends javax.swing.JFrame {
 
     /**
      * Creates new form QuizApplication
      */
-    public InstructionWin() {
+    public Home() {
         initComponents();
         setSize(500, 500);
         setLocationRelativeTo(null);
         setBackground(Color.yellow);
+        ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("Images\\icon_logo.png"));
+        setIconImage(icon.getImage());
         
     }
 
@@ -63,7 +66,7 @@ public class InstructionWin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(startButton);
-        startButton.setBounds(180, 300, 130, 110);
+        startButton.setBounds(200, 320, 100, 90);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/User Manual_48px.png"))); // NOI18N
@@ -71,29 +74,29 @@ public class InstructionWin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(60, 40, 180, 40);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/11.png"))); // NOI18N
-        jLabel1.setText("You will be given 10 multiple choice questions with 4 answers.");
+        jLabel1.setText("You will be given 10 MCQ questions with 4 answers.");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 107, 420, 30);
+        jLabel1.setBounds(70, 110, 400, 30);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/2.png"))); // NOI18N
         jLabel3.setText("Once you select the answer click SUBMIT.");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(80, 150, 290, 25);
+        jLabel3.setBounds(70, 150, 310, 25);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Sitka Text", 0, 14)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/3.png"))); // NOI18N
         jLabel4.setText("Click NEXT to move to the next question.");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(80, 190, 330, 20);
+        jLabel4.setBounds(70, 190, 320, 20);
 
         jLabel5.setFont(new java.awt.Font("Sitka Small", 1, 16)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Thumbs Up_25px.png"))); // NOI18N
         jLabel5.setText("Good Luck!");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(180, 230, 140, 40);
+        jLabel5.setBounds(190, 230, 140, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -126,14 +129,22 @@ public class InstructionWin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InstructionWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InstructionWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InstructionWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InstructionWin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -150,7 +161,7 @@ public class InstructionWin extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InstructionWin().setVisible(true);
+                new Home().setVisible(true);
             }
         });
     }
